@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import escaperegExp from 'escape-string-regexp'
 
 
 class Search extends Component {
@@ -17,6 +18,15 @@ class Search extends Component {
   render() {
 
     const { places } = this.props
+    const { query } =this.state
+
+    let filterPlaces
+    if(query) {
+      const match = new RegExp(escaperegExp(query), 'i')
+      filterPlaces = places.filter((place) => match.test(place.title))
+    } else {
+      filterPlaces = places
+    }
 
     return (
       <div className='search'>
@@ -30,7 +40,7 @@ class Search extends Component {
           />
         </label>
         <ul className='places'>
-          {places
+          {filterPlaces
           .map((place, index) => (
             <li className='place' key={index}>{place.title}</li>
           ))}
