@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import Search from './Search'
-import Map from './Map'
+
 
 
 class App extends Component {
@@ -24,10 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="header">Neighborhood Map</h1>
-        <div className="container">
         <Search places={places} />
-        <Map places={places} />
-        </div>
       </div>
     );
   }
