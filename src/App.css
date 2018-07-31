@@ -35,8 +35,6 @@ body {
   overflow: scroll;
 }
 
-
-
 .search-input-lb {
   position: relative;
   top: 10px;
@@ -67,42 +65,72 @@ body {
 .places {
   list-style-type: none;
   line-height: 2em;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
 }
 
 .place {
   border: 1px solid black;
-  margin: 10px 10px 10px -20px;
+  margin: 10px 10px 10px 10px;
   text-align: center;
+  background-color: cornsilk;
+  
 }
 
-
+.listBtn {
+  background-color: cornsilk;
+}
 
 .icon {
-  background: url('./map-marker.png') no-repeat;
+  background: url('./icons/pin.png') no-repeat;
   background-size: 40px;
   height: 40px;
   width: 40px;
 }
 
- .icon:focus {
-  background: url('./map-marker.png') no-repeat;
-  background-size: 70px;
-  height: 40px;
-  width: 40px;
+ .icon2 {
+  background-color: red;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  opacity: 1;
+  top: 7px;
+  left: 12px;
+  position: relative;
 }
-
-
 
 .info-window {
   background-color: white;
-  background-size: 50px;
-  height: 90px;
-  width: 120px;
+  /* background-size: 50px; */
+  height: 230px;
+  width: 180px;
   font-size: 1.4em;
   text-align: center;
   position: relative;
   left: 20px;
-  border: 2px red solid;
+  border: 2px #07bcf8 solid;
+  z-index: 3;
+}
+
+.x {
+  margin: 0
+}
+
+.info-title {
+  border: 1px solid gray;
+  margin: 2px;
+}
+
+.info-weather {
+  margin: 2px;
+}
+
+.apixu {
+  text-align: right;
+  font-size: 0.6em;
+  margin: -10px 4px 0 0 ;
 }
 
 
@@ -119,9 +147,4 @@ body {
     width: 100%;
     height: 70%
   }
-  /* .search-input {
-    margin: 0 5px;
-    font-size: 1em;
-    padding: 2%
-  } */
 }

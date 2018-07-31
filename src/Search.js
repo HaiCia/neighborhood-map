@@ -6,7 +6,7 @@ class Search extends Component {
 
   state = {
     query: '',
-    clickedPlace : ''
+    clickedPlace: {}
   }
 
   updateQuery = (query) => {
@@ -15,9 +15,13 @@ class Search extends Component {
   }
 
   markerClick = (place) => {
-   
-   //filterPlaces = place;
+   if(!this.state.clickedPlace) {
+     this.setState({clickedPlace: place})
+    } else {
+      this.setState({clickedPlace: ''})
+    }
   }
+
 
   
   render() {
@@ -26,6 +30,7 @@ class Search extends Component {
     const { query, clickedPlace } =this.state
 
     let filterPlaces
+    
     if(query) {
       const match = new RegExp(escaperegExp(query), 'i')
       filterPlaces = places.filter((place) => match.test(place.title))
@@ -37,8 +42,9 @@ class Search extends Component {
      
       <div className="container">
         <div className='search'>
-          <label htmlFor='search' className='search-input-lb'>Find Your Place
+          <label htmlFor='search' className='search-input-lb' >Find Your Place
             <input 
+            aria-label ="restaurants"
             tabIndex="1"
             size="12"
             type="text"
@@ -50,12 +56,17 @@ class Search extends Component {
             }}
             />
           </label>
-          <ul className='places'>
+          <ul className='places' role="navigation" aria-label="restaurants list">
             {filterPlaces
             .map((place, index) => (
-              <li className='place' key={index} tabIndex="1" onClick = {() => {
-                this.setState({clickedPlace: place})
-              }}>{place.title}</li>
+              <button className='listBtn'
+              type='submit'
+              key={index} 
+              tabIndex="1"
+              onClick = {() => this.markerClick(place)}>
+                <li className='place'>{place.title}</li>
+              </button>
+            
             ))}
           </ul>
         </div>

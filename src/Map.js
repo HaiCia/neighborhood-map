@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Markers from './Markers'
 
-// const Markers = ({ src, alt }) => <div><img src={ src } alt={alt}/></div>
-
 class Map extends Component {
   
   static defaultProps = {
@@ -14,40 +12,31 @@ class Map extends Component {
     zoom: 16,
   };
 
-  // onChildMouseEnter = (e, place) => {
-  //   console.log(place)
-  //   return <div className='info'>{place.title}</div>
-  // }
-  // onChildMouseLeave
-
   render() {
 
-    const { places } = this.props
+    const { places, clickedPlace } = this.props
 
-   return (
-    <div id='map'>
-    <GoogleMapReact
-      bootstrapURLKeys={{ key: 'AIzaSyCuhPDW5PrNifASBVj39Ieen1WapDMpHC0' }}
-      defaultCenter={this.props.center}
-      defaultZoom={this.props.zoom}
-      // onChildMouseEnter={(e, place)=> {
-      //   this.onChildMouseEnter(e, place)
-      // }}
-      // onChildMouseLeave={this.onChildMouseLeave}
-    >
+    return (
+      <div id='map' aria-label="location" role="application">
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: 'AIzaSyCuhPDW5PrNifASBVj39Ieen1WapDMpHC0' }}
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
+      >
 
-    {places
-      .map((place, index) => (
-        <Markers
-        key = {index}
-        lat={place.location.lat}
-        lng={place.location.lng}
-        title={place.title}
-         />))}
+      {places
+        .map((place, index) => (
+          <Markers
+          key = {index}
+          lat={place.location.lat}
+          lng={place.location.lng}
+          title={place.title}
+          clickedPlace={clickedPlace}
+          />))}
 
-    </GoogleMapReact>
-  </div>
-  )
+      </GoogleMapReact>
+      </div>
+    )
   }
 
 }

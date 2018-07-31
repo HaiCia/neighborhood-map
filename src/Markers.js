@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import ReactWeather from 'react-open-weather'
 
 class Markers extends Component {
 
@@ -7,7 +8,6 @@ class Markers extends Component {
   }
 
   setInfo = (infoOn) => {
-    //this.setState({mouseOn: true, mouseOff: false})
     if(!this.state.infoOn) {
       this.setState({infoOn: true})
       
@@ -22,9 +22,21 @@ class Markers extends Component {
 
       return (
         <div className='icon' onClick={this.setInfo} >
-          {infoOn === true && (
-            <p className='info-window'>{this.props.title}</p>
-          )}
+          {clickedPlace.title === this.props.title || infoOn === true ? (
+            <div className='info-window'>
+            <p className='info-title'>{this.props.title}</p>
+            <p className='x'></p>
+            <div className='info-weather'>
+              <ReactWeather 
+                forecast="today"
+                apikey="087be0632a06478e89d175412183007"
+                type="city"
+                city="Leeds"
+                unit="metric"/>
+                <p className='apixu'>powered by Apixu.com</p>
+            </div>
+            </div>) : (<p className='icon2'></p>)}
+
         </div>)
     }
 

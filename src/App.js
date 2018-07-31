@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import Search from './Search'
+import 'react-open-weather/lib/css/ReactWeather.css'
 
 
 
@@ -23,7 +24,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1 className="header">Neighborhood Map</h1>
+        <h1 className="header" aria-label='Neighborhood Map'>Neighborhood Map</h1>
         <Search places={places} />
       </div>
     );
