@@ -18,7 +18,7 @@ I have used Google Maps API and Online World Weather API by Apixu, API keys migh
 * Node with Npm
 * Yarn (with serve if you want to check service worker is working)
 
-## How to use application
+## How to get application- [live preview](https://haicia.github.io/neighborhood-map/) or
 
 1. clone the repository
 2. install dependencies 
